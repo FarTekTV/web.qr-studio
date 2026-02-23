@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Studio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/media/qr-studio.logo.webp">
+    <link rel="icon" type="image/png" sizes="32x32" href="/media/qr-studio.logo.webp">
+    <link rel="icon" type="image/png" sizes="16x16" href="/media/qr-studio.logo.webp">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">⬛</div>
+            </div>
+            <h1>QR Studio</h1>
+            <p class="subtitle">// universal QR code generator</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('url', this)">🔗 URL</button>
+            <button class="tab" onclick="switchTab('wifi', this)">📶 Wi-Fi</button>
+            <button class="tab" onclick="switchTab('text', this)">💬 Text</button>
+        </div>
+
+        <div class="card">
+            <div class="error-msg" id="error-msg"></div>
+
+            <div class="panel active" id="panel-url">
+                <div class="form-group">
+                    <label>URL or link</label>
+                    <input type="url" id="url-input" placeholder="https://example.com" />
+                </div>
+            </div>
+
+            <div class="panel" id="panel-wifi">
+                <div class="notice">
+                    ℹ️ Scan with the Camera app → automatic connection, no need to type the password.
+                </div>
+                <div class="form-group">
+                    <label>Network name (SSID)</label>
+                    <input type="text" id="wifi-ssid" placeholder="MyWiFi" />
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="text" id="wifi-pass" placeholder="password" />
+                </div>
+                <div class="form-group">
+                    <label>Security type</label>
+                    <select id="wifi-sec">
+                        <option value="WPA">WPA / WPA2 / WPA3 (recommended)</option>
+                        <option value="WEP">WEP (legacy)</option>
+                        <option value="nopass">None — open network</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="panel" id="panel-text">
+                <div class="form-group">
+                    <label>Text or message</label>
+                    <input type="text" id="text-input" placeholder="Your text here..." />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>QR Code size</label>
+                <div class="slider-row">
+                    <input type="range" id="qr-size" min="200" max="500" step="50" value="300"
+                        oninput="document.getElementById('size-val').textContent = this.value + 'px'" />
+                    <span class="slider-val" id="size-val">300px</span>
+                </div>
+            </div>
+
+            <button class="btn-generate" onclick="generate()">⚡ Generate QR Code</button>
+
+            <div class="result" id="result">
+                <div class="qr-wrapper">
+                    <canvas id="qrcanvas"></canvas>
+                </div>
+                <div class="qr-hint">⬛ black on white · compatible with iOS & Android · zoomable</div>
+                <div class="result-actions">
+                    <button class="btn-action btn-dl" onclick="downloadQR()">⬇ Download PNG</button>
+                    <button class="btn-action btn-copy" onclick="copyData()" id="copy-btn">📋 Copy data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Made by <span class="footer-studio">WebMake Studio</span> · <span class="footer-author">FarTekTV</span></p>
+        <p class="footer-copy">&copy; 2026 — WebMake Studio, FarTekTV.</p>
+    </footer>
+
+    <script src="assets/app.js"></script>
+</body>
+
+</html>
