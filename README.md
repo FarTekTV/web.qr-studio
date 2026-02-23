@@ -1,6 +1,7 @@
 # QR Code Generator
 
 A simple and fast QR Code Generator that lets you create QR codes for URLs, Wi-Fi networks, and custom text.
+Link: https://fartektv.github.io/web.qr-studio/
 
 ## ✨ Features
 
