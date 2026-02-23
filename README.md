@@ -42,4 +42,4 @@ Generate a QR code from any message or free-form text (up to 350 characters).
 
 ## 📄 License
 
-Specify your license here (e.g., MIT License).
+Apache License Version 2.0
